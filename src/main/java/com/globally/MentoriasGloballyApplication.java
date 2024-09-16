@@ -1,4 +1,4 @@
-package com.example.mentorias.globally;
+package com.globally;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
