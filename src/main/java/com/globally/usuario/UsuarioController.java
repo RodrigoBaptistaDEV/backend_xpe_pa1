@@ -2,7 +2,6 @@ package com.globally.usuario;
 
 import com.globally.usuario.dtos.SendUserDTO;
 import com.globally.usuario.dtos.ViewUsuarioDTO;
-import com.globally.usuario.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

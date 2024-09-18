@@ -1,4 +1,4 @@
-package com.globally.commom.entitys;
+package com.globally.mentor;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,8 +25,8 @@ public class Mentor {
     private String email;
 
     @Column(name= "descricao_curta", nullable = false)
-    private String descricao_curta;
+    private String descricaoCurta;
 
     @Column(name= "descricao_longa", nullable = false)
-    private String descricao_longa;
+    private String descricaoLonga;
 }

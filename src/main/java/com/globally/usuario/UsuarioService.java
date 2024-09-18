@@ -1,9 +1,7 @@
-package com.globally.usuario.services;
+package com.globally.usuario;
 
-import com.globally.usuario.UsuarioRepository;
 import com.globally.usuario.dtos.SendUserDTO;
 import com.globally.usuario.dtos.ViewUsuarioDTO;
-import com.globally.usuario.Usuario;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
