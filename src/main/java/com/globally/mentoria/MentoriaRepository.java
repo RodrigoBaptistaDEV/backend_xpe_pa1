@@ -20,5 +20,12 @@ public interface MentoriaRepository extends JpaRepository<Mentoria, Long> {
                                         @Param("ano") Long ano,
                                         Pageable pageable);
 
+    @Query("SELECT m FROM Mentoria m WHERE m.mentorKey = :mentorId " +
+            "AND MONTH(m.dataHora) = :mes " +
+            "AND YEAR(m.dataHora) = :ano")
+    Page<Mentoria> getAllByMentorPerMonth(@Param("mentorId") Long mentorId,
+                                          @Param("mes") Integer mes,
+                                          @Param("ano") Long ano,
+                                          Pageable pageable);
 
 }

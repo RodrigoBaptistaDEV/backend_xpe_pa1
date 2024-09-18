@@ -46,5 +46,15 @@ public class MentoriaController {
         return ResponseEntity.ok(allMentoriasByUserIdPage);
     }
 
+    @GetMapping("/mentor/{mentorId}/{year}/{month}")
+    public ResponseEntity<Page<ViewMentoriaDTO>> getAllByMentorIdMonth(@PathVariable Long mentorId,
+                                                                     @PathVariable Integer month,
+                                                                     @PathVariable Long year,
+                                                                     @ModelAttribute RequestPageDTO requestPageDTO){
+        Sort sort = Sort.by(Sort.Direction.fromString(requestPageDTO.getSortDirection()), requestPageDTO.getSortAttribute());
+        Pageable pageable = PageRequest.of(requestPageDTO.getPageNumber(), requestPageDTO.getPageSize(), sort);
+        Page<ViewMentoriaDTO> allMentoriasByUserIdPage = mentoriaService.getAllByMentorPerMonth(mentorId, month, year, pageable);
+        return ResponseEntity.ok(allMentoriasByUserIdPage);
+    }
 
 }

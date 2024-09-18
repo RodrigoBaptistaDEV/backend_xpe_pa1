@@ -42,4 +42,13 @@ public class MentoriaService {
         }
     }
 
+    public Page<ViewMentoriaDTO> getAllByMentorPerMonth(Long mentorId, Integer month, Long year, Pageable pageable) {
+        try {
+            Page<Mentoria> entityPage = mentoriaRepository.getAllByMentorPerMonth(mentorId, month, year,pageable);
+            return entityPage.map(ViewMentoriaDTO::new);
+        } catch(Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
 }
