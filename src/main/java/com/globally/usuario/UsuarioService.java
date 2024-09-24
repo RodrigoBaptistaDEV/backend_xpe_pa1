@@ -2,15 +2,15 @@ package com.globally.usuario;
 
 import com.globally.usuario.dtos.SendUserDTO;
 import com.globally.usuario.dtos.ViewUsuarioDTO;
-import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
-
 @Service
-public class UsuarioService {
+public class UsuarioService implements UserDetailsService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -18,23 +18,15 @@ public class UsuarioService {
     @Autowired
     ModelMapper modelMapper;
 
-    public ViewUsuarioDTO loginUser(String email, String senha) {
-        Usuario usuario = usuarioRepository.findByEmail(email);
-
-        if(Objects.isNull(usuario)){
-            throw new EntityNotFoundException("email não encontrado");
-        }
-
-        if((!Objects.equals(usuario.getSenha(), senha))){
-            throw new RuntimeException("senha inválida");
-        }
-
-        return modelMapper.map(usuario, ViewUsuarioDTO.class);
-    }
-
     public ViewUsuarioDTO createUser(SendUserDTO dto) {
         Usuario savedEntity = usuarioRepository.save(modelMapper.map(dto, Usuario.class));
         return modelMapper.map(savedEntity,ViewUsuarioDTO.class);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email)
+            throws UsernameNotFoundException {
+        return usuarioRepository.findByEmail(email);
     }
 
 }

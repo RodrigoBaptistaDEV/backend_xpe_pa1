@@ -3,6 +3,7 @@ package com.globally.mentoria;
 import com.globally.commom.dtos.RequestPageDTO;
 import com.globally.mentoria.dtos.SendMentoriaDTO;
 import com.globally.mentoria.dtos.ViewMentoriaDTO;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 
 @RestController
 @RequestMapping("/mentorias")
+@SecurityRequirement(name = "bearerAuth")
 public class MentoriaController {
 
     @Autowired
