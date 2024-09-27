@@ -1,8 +1,4 @@
-Com base nos controladores e nas configurações que você forneceu, aqui está um esqueleto de README que descreve seu projeto Java Spring Boot:
-
----
-
-# Mentorias Globally
+# API Para Plataforma de Mentorias Online
 
 Este é um projeto backend desenvolvido em Java utilizando o framework Spring Boot. O sistema oferece funcionalidades para gerenciar mentores, mentorias e usuários, com autenticação e autorização implementadas usando Spring Security e JWT.
 
